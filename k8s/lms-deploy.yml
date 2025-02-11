@@ -23,3 +23,14 @@ spec:
                 secretKeyRef:
                   name: postgres-secret
                   key: password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-cluster-ip-service
+spec:
+  type: ClusterIP # Optional
+  selector:
+    component: postgres
+  ports:
+    - port: 5432
