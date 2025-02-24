@@ -7,3 +7,13 @@ resource "aws_vpc" "lms" {
     Name = "lms"
   }
 }
+
+# Web Subnet
+resource "aws_subnet" "lms-web-sn" {
+  vpc_id     = aws_vpc.lms.id
+  cidr_block = "10.0.1.0/24"
+
+  tags = {
+    Name = "lms-web-subnet"
+  }
+}
