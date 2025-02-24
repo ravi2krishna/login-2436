@@ -18,3 +18,14 @@ resource "aws_subnet" "lms-web-sn" {
     Name = "lms-web-subnet"
   }
 }
+
+# API Subnet
+resource "aws_subnet" "lms-api-sn" {
+  vpc_id     = aws_vpc.lms.id
+  cidr_block = "10.0.2.0/24"
+  map_public_ip_on_launch = "true"
+
+  tags = {
+    Name = "lms-api-subnet"
+  }
+}
