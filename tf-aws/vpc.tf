@@ -63,3 +63,10 @@ resource "aws_route_table" "lms-pub-rt" {
     Name = "lms-public-rt"
   }
 }
+
+# Web Subnet Association
+resource "aws_route_table_association" "lms-web-asc" {
+  subnet_id      = aws_subnet.lms-web-sn.id
+  route_table_id = aws_route_table.lms-pub-rt.id
+}
+
