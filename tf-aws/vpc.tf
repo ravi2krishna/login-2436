@@ -70,3 +70,8 @@ resource "aws_route_table_association" "lms-web-asc" {
   route_table_id = aws_route_table.lms-pub-rt.id
 }
 
+# API Subnet Association
+resource "aws_route_table_association" "lms-api-asc" {
+  subnet_id      = aws_subnet.lms-api-sn.id
+  route_table_id = aws_route_table.lms-pub-rt.id
+}
