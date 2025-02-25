@@ -159,7 +159,7 @@ resource "aws_vpc_security_group_ingress_rule" "lms-web-sg-ssh" {
 # Web Security Group Ingress Rule - http
 resource "aws_vpc_security_group_ingress_rule" "lms-web-sg-http" {
   security_group_id = aws_security_group.lms-web-sg.id
-  cidr_ipv6         = "0.0.0.0/0"
+  cidr_ipv4         = "0.0.0.0/0"
   from_port         = 80
   ip_protocol       = "tcp"
   to_port           = 80
