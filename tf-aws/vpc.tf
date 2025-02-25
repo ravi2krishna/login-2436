@@ -146,3 +146,28 @@ resource "aws_security_group" "lms-web-sg" {
     Name = "lms-web-sg"
   }
 }
+
+# Web Security Group Ingress Rule - ssh
+resource "aws_vpc_security_group_ingress_rule" "lms-web-sg-ssh" {
+  security_group_id = aws_security_group.lms-web-sg.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 22
+  ip_protocol       = "tcp"
+  to_port           = 22
+}
+
+# Web Security Group Ingress Rule - http
+resource "aws_vpc_security_group_ingress_rule" "lms-web-sg-http" {
+  security_group_id = aws_security_group.lms-web-sg.id
+  cidr_ipv6         = "0.0.0.0/0"
+  from_port         = 80
+  ip_protocol       = "tcp"
+  to_port           = 80
+}
+
+# Web Security Group Egress Rule - All
+resource "aws_vpc_security_group_egress_rule" "lms-web-sg-all" {
+  security_group_id = aws_security_group.lms-web-sg.id
+  cidr_ipv4         = "0.0.0.0/0"
+  ip_protocol       = "-1" # semantically equivalent to all ports
+}
