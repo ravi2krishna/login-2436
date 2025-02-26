@@ -62,3 +62,10 @@ resource "azurerm_public_ip" "lms-api-pip" {
     environment = "dev"
   }
 }
+
+# Web Network Security Group - NSG
+resource "azurerm_network_security_group" "lms-web-nsg" {
+  name                = "lms-web-nsg"
+  location            = azurerm_resource_group.lms-rg.location
+  resource_group_name = azurerm_resource_group.lms-rg.name
+}
