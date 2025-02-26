@@ -50,3 +50,15 @@ resource "azurerm_public_ip" "lms-web-pip" {
     environment = "dev"
   }
 }
+
+# API Public IP
+resource "azurerm_public_ip" "lms-api-pip" {
+  name                = "lms-api-pip"
+  resource_group_name = azurerm_resource_group.lms-rg.name
+  location            = azurerm_resource_group.lms-rg.location
+  allocation_method   = "Static"
+
+  tags = {
+    environment = "dev"
+  }
+}
