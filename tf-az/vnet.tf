@@ -187,3 +187,9 @@ resource "azurerm_network_interface" "lms-web-nic" {
     public_ip_address_id = azurerm_public_ip.lms-web-pip.id
   }
 }
+
+# WEB NIC Association
+resource "azurerm_network_interface_security_group_association" "lms-web-nic-asc" {
+  network_interface_id      = azurerm_network_interface.lms-web-nic.id
+  network_security_group_id = azurerm_network_security_group.lms-web-nsg.id
+}
